@@ -1,0 +1,122 @@
+{ % extends "Performers.j2" % }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Manage Performers</title>
+
+<!-- Add Bootstrap CSS-->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+
+<!-- Add Bootstrap Icons-->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
+
+</head>
+<style>
+  .navbar-brand {
+  padding: 1rem
+}
+</style>
+<body style="background-color:#D3FFC2";>
+
+    <!-- Navbar -->
+
+    <header>
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand" href="/">The Green Room</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/Performers">Performers </a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="/Movie_Credits">Movie_Credits </a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="/TV_Show_Credits">TV_Show_Credits </a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="/Movies">Movies </a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="/TV_Shows">TV_Shows </a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="/Users">Users </a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="/Movie_Credit_User_Reviews">Movie_Credit_User_Reviews </a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="/TV_Show_Credit_User_Reviews">TV_Show_Credit_User_Reviews </a>
+            </li>
+
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <br></br>
+    <br></br>
+    <br></br>
+    <title>{% block title %}Update Movie{% endblock %}</title>
+
+  <header>
+    {% block header %}<h1>Update Movie</h1>{% endblock %}
+  </header>
+
+
+  
+<div class="col">
+    <div>
+      <div class="card card-body">
+        <form action="{{ url_for('updateMovie', id=movie['movie_id'])}}" method="POST">
+          <div>
+            <div>
+              <label for="movie_title">First Name: </label>
+              <input type="text" name="movie_title" value="{{ request.form['title'] or movie['movie_title'] }}" required>
+              <label for="movie_release_date">Movie Release Date: </label>
+              <input type="date" name="movie_release_date" value="{{ request.form['release_date'] or movie['movie_release_date'] }}" required>
+            </div>
+            <div>
+              <label for="movie_runtime">RunTime: </label>
+              <input type="number" name="movie_runtime" value="{{ request.form['runtime'] or movie['movie_runtime'] }}" required>
+              <label for="movie_budget"">Budget: </label>
+              <input type="number" name="movie_budget" value="{{ request.form['budget'] or movie['movie_budget'] }}" required>
+            </div>
+            <div>
+              <label for="movie_director_first_name">Director First Name: (inches): </label>
+              <input type="text" name="movie_director_first_name" value="{{ request.form['director_first_name'] or movie['movie_director_first_name'] }}" required>
+              <label for="movie_director_last_name">Director Last Name: </label>
+              <input type="text" name="movie_director_last_name" value="{{ request.form['director_last_name'] or movie['movie_director_last_name'] }}" required>
+            </div>
+            <div>
+              <label for="movie_rating_tomatoes_critic">Tomatoes Critic Rating (ex. 0.55): </label>
+              <input type="number" step="0.01" name="movie_rating_tomatoes_critic" value="{{ request.form['tomatoes_critic'] or movie['movie_rating_tomatoes_critic'] }}" required>
+              <label for="movie_rating_tomatoes_audience">Tomatoes Audience Rating (ex. 0.55): </label>
+              <input type="number" step="0.01" name="movie_rating_tomatoes_audience" value="{{ request.form['tomatoes_audience'] or movie['movie_rating_tomatoes_audience'] }}" required>
+            </div>
+            <div>
+              <label for="movie_rating_imdb_critic">Imdb Critic Rating (ex. 0.55): </label>
+              <input type="number" step="0.01" name="movie_rating_imdb_critic" value="{{ request.form['imdb_critic'] or movie['movie_rating_imdb_critic'] }}" required>
+              <label for="movie_rating_imdb_audience">Imdb Audience Rating (ex. 0.55): </label>
+              <input type="number" step="0.01" name="movie_rating_imdb_audience" value="{{ request.form['imdb_audience'] or movie['movie_rating_imdb_audience'] }}" required>
+            </div>
+            <div>
+              <label for="movie_rating_meta_critic">Meta Critic Rating (ex. 0.55): </label>
+              <input type="number" step="0.01" name="movie_rating_meta_critic" value="{{ request.form['meta_critic'] or movie['movie_rating_meta_critic'] }}" required>
+              <label for="movie_rating_meta_audience">Meta Audience Rating (ex. 0.55): </label>
+              <input type="number" step="0.01" name="movie_rating_meta_audience" value="{{ request.form['meta_audience'] or movie['movie_rating_meta_audience'] }}" required>
+            </div>
+            <br>          
+            <input type="submit" class="btn btn-primary"></input>              
+          </form>
+        </div>
+      </div>
+  </div>
+
+
+    
