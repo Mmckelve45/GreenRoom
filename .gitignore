@@ -1,0 +1,9 @@
+/.vscode
+.vscode
+/venv
+venv
+/.env
+.env
+.DS_Store
+.project
+.pyc
